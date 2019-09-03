@@ -15,7 +15,6 @@ class Graph:
         self.graph[u].append(v)
 
     def DFSUtil(self, v, visited):
-
         visited[v] = True
         print(v)
 
@@ -26,7 +25,6 @@ class Graph:
     def DFS(self, v):
         # Mark all the vertices as not visited
         visited = [False] * (len(self.graph))
-
         self.DFSUtil(v, visited)
 
 
