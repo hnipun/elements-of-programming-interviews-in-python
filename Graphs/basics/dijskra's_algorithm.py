@@ -1,38 +1,38 @@
 import sys
 
 
-class Graph():
+class Graph:
     def __init__(self, vertices):
         self.V = vertices
         self.graph = [[0 for column in range(vertices)]
                       for row in range(vertices)]
 
-    def printSolution(self, dist):
-        print ("Vertex tDistance from Source")
+    def print_solution(self, dist):
+        print("Vertex tDistance from Source")
 
         for node in range(self.V):
-            print (node, "t", dist[node])
+            print(node, "t", dist[node])
 
             # A utility function to find the vertex with
             # minimum distance value, from the set of vertices
             # not yet included in shortest path tree
 
-    def minDistance(self, dist, sptSet):
+    def min_distance(self, dist, spt_set):
 
         # Initilaize minimum distance for next node
         min = sys.maxsize
-        min_index =0
+        min_index = 0
 
         # Search not nearest vertex not in the
         # shortest path tree
         for v in range(self.V):
-            if dist[v] < min and sptSet[v] == False:
+            if dist[v] < min and not spt_set[v]:
                 min = dist[v]
                 min_index = v
 
         return min_index
 
-        # Funtion that implements Dijkstra's single source
+        # Function that implements Dijkstra's single source
         # shortest path algorithm for a graph represented
         # using adjacency matrix representation
 
@@ -40,28 +40,28 @@ class Graph():
 
         dist = [sys.maxsize] * self.V
         dist[src] = 0
-        sptSet = [False] * self.V
+        spt_set = [False] * self.V
 
-        for cout in range(self.V):
+        for count in range(self.V):
 
             # Pick the minimum distance vertex from
             # the set of vertices not yet processed.
             # u is always equal to src in first iteration
-            u = self.minDistance(dist, sptSet)
+            u = self.min_distance(dist, spt_set)
 
             # Put the minimum distance vertex in the
-            # shotest path tree
-            sptSet[u] = True
+            # shortest path tree
+            spt_set[u] = True
 
             # Update dist value of the adjacent vertices
             # of the picked vertex only if the current
             # distance is greater than new distance and
-            # the vertex in not in the shotest path tree
+            # the vertex in not in the shortest path tree
             for v in range(self.V):
-                if self.graph[u][v] > 0 and sptSet[v] == False and  dist[v] > dist[u] + self.graph[u][v]:
+                if self.graph[u][v] > 0 and not spt_set[v] and dist[v] > dist[u] + self.graph[u][v]:
                     dist[v] = dist[u] + self.graph[u][v]
 
-        self.printSolution(dist)
+        self.print_solution(dist)
 
 
 # Driver program
