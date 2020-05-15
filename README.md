@@ -1,4 +1,4 @@
-# Elements-of-Programming-Interviews-in-Python
+# elements-of-programming-interviews-in-python
 
 https://www.cs.princeton.edu/~wayne/kleinberg-tardos/
 
